@@ -1,7 +1,5 @@
 pipeline {
     agent any
-    try
-    {
         echo 'Started'
         stage('GIT Checkout') 
         {
@@ -18,10 +16,4 @@ pipeline {
             archiveArtifacts 'target/*.jar'
         }
         echo 'Success'
-    }
-    catch(err)
-    {
-       echo "Error Caught : ${err}"
-        currentBuild.result = 'FAILURE'
-    }  
 }
